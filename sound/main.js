@@ -21,17 +21,28 @@ Ext.onReady(function () {
 
   voice.self = null;
   function voice(){
-    var file = 'mail.wav';
+    var file = 'mail';
     if (Ext.isIE) {
       //Ext.DomHelper方式创建无效
       var sound = document.createElement('bgsound');
-      sound.setAttribute('src', file);
+      sound.setAttribute('src', file + '.wav');
       sound.setAttribute('loop', 1);
       sound.setAttribute('autostart', true);
       document.body.appendChild(sound);
       voice.self = sound;
     } else {
-      voice.self = Ext.DomHelper.append(document.body, {tag: 'embed', src: file, hidden: true, autostart: true, loop: false});
+      voice.self = Ext.DomHelper.append(document.body, {
+        tag: 'audio',
+        children: [{
+          tag: 'source',
+          src: file + '.ogg',
+          type: 'audio/ogg'
+        }, {
+          tag: 'source',
+          src: file + '.mp3',
+          type: 'audio/mp3'
+        }]});
+      voice.self.play();
     }
   }
   voice.stop = function(){
