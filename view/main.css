@@ -1,0 +1,11 @@
+.view_wrap {
+  background: url("property-cell-bg.gif") repeat-y -18px, 1px;
+}
+.view_field_label {
+  padding-left: 12px;
+}
+.view_field {
+  border-left: 1px solid #ccc;
+  padding-left: 5px;
+  min-height: 18px;
+}
